@@ -1,0 +1,84 @@
+<div class="container">  
+  <input type="button" class="btn btn-primary" (click)="loadAddnew()" data-toggle="modal" data-target="#myModal" value="Criar Novo">  
+  <hr>  
+  <div *ngIf="!dataavailable">  
+  
+    <h4> Nao existem leiloes. Adicione um novo registro clicando em Criar Novo</h4>  
+  </div>  
+  
+  <table class="table" *ngIf="dataavailable">  
+    <thead>  
+      <tr>  
+        <th scope="col">Id:</th>  
+        <th scope="col">Nome do Leilao</th>  
+        <th scope="col">Valor Inicial</th>  
+        <th scope="col">Condicao</th>  
+        <th scope="col">Leiloeiro</th>  \
+        <th scope="col">Data Inicial</th>  
+        <th scope="col">Data Final</th>  
+        <th scope="col" style="align-content: center">Acoes</th>  
+      </tr>  
+    </thead>  
+    <tbody>  
+      <tr *ngFor="let e of auclist let i = index ">  
+        <td scope="col">{{i+1}}</td>  
+        <td scope="col">{{e.auctionName}}</td>  
+        <td scope="col">{{e.initialBet}}</td>  
+        <td scope="col">{{e.usedItem=="1"?'Usado':'Novo'}}</td>  
+        <td scope="col">{{e.auctioneer}}</td>  
+        <td scope="col">{{e.startDate}}</td>  
+        <td scope="col">{{e.endDate}}</td>  
+        
+        <td style="display:none">{{e.id}}</td>  
+        <td scope="col">  
+          <button type="button" class="btn btn-default btn-primary" (click)="loadnewForm(e.id,e.auctionName,e.initialBet, e.usedItem,e.auctioneer,e.startDate,e.endDate)"  
+            data-toggle="modal" data-target="#myModaledit">  
+            <span class="glyphicon glyphicon-edit"></span> Editar  
+          </button>  
+          |  
+          <button type="button" class="btn btn-default btn-danger" (click)="deleteconfirmation(e.id)">  
+            <span class="glyphicon glyphicon-trash"></span> Excluir  
+          </button>  
+  
+        </td>  
+      </tr>  
+    </tbody>  
+  </table>  
+  
+  <div id="myModal" class="modal fade" role="dialog">  
+    <div class="modal-dialog">  
+      <div class="modal-content">  
+        <div class="modal-header">  
+          <button type="button" class="close" data-dismiss="modal">×</button>  
+          <h4 class="modal-primary">Adicionar Leilao</h4>  
+        </div>  
+        <div class="modal-body">  
+  
+          <app-auction-add #auctionadd (nameEvent)="RefreshData($event)"></app-auction-add>  
+  
+        </div>  
+        <div class="modal-footer">  
+          <button type="button" #closeBtn class="btn btn-danger" data-dismiss="modal">Fechar</button>  
+        </div>  
+      </div>  
+  
+    </div>  
+  </div>  
+  
+  <div id="myModaledit" class="modal fade" role="dia    log">  
+    <div class="modal-dialog">  
+      <div class="modal-content">  
+        <div class="modal-header">  
+          <button type="button" class="close" data-dismiss="modal">×</button>  
+          <h4 class="modal-title">Editar</h4>  
+        </div>  
+        <div class="modal-body">  
+          <app-auction-update (nameEvent)="RefreshData($event)" [isReset]="resetForm" #regForm></app-auction-update>  
+        </div>  
+        <div class="modal-footer">  
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>  
+        </div>  
+      </div>  
+  
+    </div>  
+  </div>  
