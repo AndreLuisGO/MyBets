@@ -13,9 +13,9 @@ export class AuctionAddComponent implements OnInit {
 
 
   @Input() cleardata = false;
-  @Output() nameEvent= new EventEmitter<string>();
+  @Output() nameEvent = new EventEmitter<string>();
   objtempauction: Auction;
-  @Input() objauc: Auction = new Auction(); 
+  @Input() objauc: Auction = new Auction();
   @ViewChild('closeBtn', {static: false}) cb: ElementRef;
 
 constructor(private dataService: AuctionDataService, private route: Router) {
@@ -24,7 +24,7 @@ constructor(private dataService: AuctionDataService, private route: Router) {
 ngOnInit() {
 
 }
-Register(regForm: NgForm){
+Register(regForm: NgForm) {
   this.objtempauction = new Auction();
   this.objtempauction.auctionName = regForm.value.auctionName;
   this.objtempauction.initialBet = regForm.value.initialBet;
@@ -37,9 +37,9 @@ Register(regForm: NgForm){
     alert('Leilao registrado com sucesso!');
     this.TakeHome();
   }
-  )
+  );
 }
-TakeHome(){
+TakeHome() {
   this.nameEvent.emit('ccc');
   this.cb.nativeElement.click();
   this.route.navigateByUrl('');
