@@ -5,24 +5,24 @@ import { ROOT_URL } from 'src/Models/Config';
 import { Observable } from 'rxjs';
 @Injectable()
 export class AuctionDataService {
-  employees: Observable<Auction[]>;
-  newemployee: Auction;
+  auctions: Observable<Auction[]>;
+  newauction: Auction;
   constructor(private http: HttpClient) {
   }
 
   getAuction() {
     return this.http.get<Auction[]>(ROOT_URL + 'Auctions');
   }
-  AddAuction(auc: Auction) {
+  AuctionAdd(auc: Auction) {
 
     const headers = new HttpHeaders().set('content-type', 'application/json');
     const body = {
-      Auctioname: auc.auctionName,
-      InitBet: auc.initialBet,
-      UsedItem: auc.usedItem,
-      Auctioneer: auc.auctioneer,
-      StartDate: auc.startDate,
-      EndDate: auc.endDate
+      AuctionName: auc.AuctionName,
+      InitialBet: auc.InitialBet,
+      UsedItem: auc.UsedItem,
+      Auctioneer: auc.Auctioneer,
+      StartDate: auc.StartDate,
+      EndDate: auc.EndDate
     };
     console.log(ROOT_URL);
 
@@ -32,31 +32,31 @@ export class AuctionDataService {
 
   EditAuction(auc: Auction) {
     console.log(auc);
-    const params = new HttpParams().set('ID', auc.id);
+    const params = new HttpParams().set('ID', auc.Id);
     const headers = new HttpHeaders().set('content-type', 'application/json');
     const body = {
-      Auctioname: auc.auctionName,
-      InitBet: auc.initialBet,
-      UsedItem: auc.usedItem,
-      Auctioneer: auc.auctioneer,
-      StartDate: auc.startDate,
-      EndDate: auc.endDate
+      AuctionName: auc.AuctionName,
+      InitialBet: auc.InitialBet,
+      UsedItem: auc.UsedItem,
+      Auctioneer: auc.Auctioneer,
+      StartDate: auc.StartDate,
+      EndDate: auc.EndDate
     };
-    return this.http.put<Auction>(ROOT_URL + 'Auctions/' + auc.id, body, { headers, params });
+    return this.http.put<Auction>(ROOT_URL + 'Auctions/' + auc.Id, body, { headers, params });
 
   }
   DeleteAuction(auc: Auction) {
-    const params = new HttpParams().set('ID', auc.id);
+    const params = new HttpParams().set('ID', auc.Id);
     const headers = new HttpHeaders().set('content-type', 'application/json');
     const body = {
-      Auctioname: auc.auctionName,
-      InitBet: auc.initialBet,
-      UsedItem: auc.usedItem,
-      Auctioneer: auc.auctioneer,
-      StartDate: auc.startDate,
-      EndDate: auc.endDate
+      AuctionName: auc.AuctionName,
+      InitialBet: auc.InitialBet,
+      UsedItem: auc.UsedItem,
+      Auctioneer: auc.Auctioneer,
+      StartDate: auc.StartDate,
+      EndDate: auc.EndDate
     };
-    return this.http.delete<Auction>(ROOT_URL + '/Auctions/' + auc.id);
+    return this.http.delete<Auction>(ROOT_URL + '/Auctions/' + auc.Id);
 
   }
 

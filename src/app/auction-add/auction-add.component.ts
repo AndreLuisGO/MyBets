@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Auction } from 'src/Models/Auction';
 import { Router } from '@angular/router';
 import { AuctionDataService } from '../DataService/AuctionDataService';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-auction-add',
@@ -26,14 +27,14 @@ ngOnInit() {
 }
 Register(regForm: NgForm) {
   this.objtempauction = new Auction();
-  this.objtempauction.auctionName = regForm.value.auctionName;
-  this.objtempauction.initialBet = regForm.value.initialBet;
-  this.objtempauction.usedItem = regForm.value.usedItem;
-  this.objtempauction.auctioneer = regForm.value.auctioneer;
-  this.objtempauction.startDate = regForm.value.startDate;
-  this.objtempauction.endDate = regForm.value.endDate;
+  this.objtempauction.AuctionName = regForm.value.auctionName;
+  this.objtempauction.InitialBet = regForm.value.initialBet;
+  this.objtempauction.UsedItem = regForm.value.usedItem;
+  this.objtempauction.Auctioneer = regForm.value.auctioneer;
+  this.objtempauction.StartDate = regForm.value.startDate;
+  this.objtempauction.EndDate = regForm.value.endDate;
 
-  this.dataService.AddAuction(this.objtempauction).subscribe(res => {
+  this.dataService.AuctionAdd(this.objtempauction).subscribe(res => {
     alert('Leilao registrado com sucesso!');
     this.TakeHome();
   }
