@@ -1,56 +1,56 @@
 <div class="container" style="border:thin">  
-  <form #auctionadd='ngForm' (ngSubmit)="Register(auctionadd)" class="form-horizontal" style="width:50%"  >    
+  <form #auctionadd='ngForm' autocomplete="off" (ngSubmit)="Register(auctionadd)" class="form-horizontal" style="width:50%"  >    
   <div class="form-group" >  
-              <label class="control-label col-sm-2" for="auctionName" >Nome do Leilao:</label>  
+              <label class="control-label col-sm-2" for="AuctionName" >Nome do Leilao:</label>  
               <div class="col-sm-10">  
-                <input  style="width:50%"    type="text" class="form-control"  
-                 width="50%" id="auctionName" placeholder="Nome do Leilao"  
-                 name="auctionName" auctionName required [(ngModel)]='objtempauction.auctionName'  #auctionName="ngModel">  
-             <span class="help-bpx" *ngIf="auctionName.touched && !auctionName.valid ">Obrigatorio</span>  
+                <input #ActionName="ngModel" style="width:50%" required type="auctionName" [(ngModel)]="auctionNameText" class="form-control" width="50%" id="auctionName" placeholder="Nome do Leilao" name="auctionName">  
+            <!-- <span class="help-bpx" *ngIf="AuctionName.touched && !AuctionName.valid ">Obrigatorio</span>  -->
               </div>  
             </div>  
             <div class="form-group" >  
               <label class="control-label col-sm-2" for="initialBet">Valor Inicial:</label>  
               <div class="col-sm-10">  
-                <input style="width:50%"   required type="text" class="form-control" width="50%"   
-                id="initialBet" placeholder="Valor Inicial" name="initialBet" initialBet required [(ngModel)]='objtempauction.initialBet'  #initialBet="ngModel">  
-                <span class="help-bpx" *ngIf="initialBet.touched && !initialBet.valid ">Obrigatorio</span>  
+                <input  #initialBet="ngModel" style="width:50%" required type="number" min ="0" value="0" step="0.50" class="form-control" width="50%" id="initialBet" placeholder="Valor Inicial" name="initialBet" [(ngModel)]='initialBetText' onblur="this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this.value)?'inherit':'red'">  
+                <!-- <span class="help-bpx" *ngIf="initialBet.touched && !initialBet.valid ">Obrigatorio</span>  -->
               </div>   
             </div>  
             <div class="form-group" >  
-              <label class="control-label col-sm-2" for="usedItem">Condição:</label>  
+              <label class="control-label col-sm-2" for="UsedItem">Condição:</label>  
               <div class="col-sm-10">  
-                <select name="usedItem" usedItem required [(ngModel)]='objtempauction.usedItem'  #usedItem="ngModel">  
+                <select name="usedItem" usedItem required [(ngModel)]='usedItemText'  #usedItem="ngModel">  
                 <option value="0" selected disabled>Selecione</option>  
                 <option value="1">Usado</option>  
                 <option value="2">Novo</option>  
-                <span class="help-bpx" *ngIf="usedItem.touched && !usedItem.valid ">Obrigatorio</span>  
+               <!-- <span class="help-bpx" *ngIf="usedItem.touched && !usedItem.valid ">Obrigatorio</span>  -->
               </select>  
               </div>  
             </div>  
             <div class="form-group" >  
               <label class="control-label col-sm-2" for="auctioneer">Leiloeiro:</label>  
               <div class="col-sm-10">  
-                <input #auctioneer="ngModel"  style="width:50%" type="auctioneer" [(ngModel)]='objtempauction.auctioneer' class="form-control" width="50%" id="auctioneer" placeholder="Leiloeiro" name="auctioneer">  
-                <span class="help-bpx" *ngIf="auctioneer.touched && !auctioneer.valid ">**</span>  
+                <input #auctioneer="ngModel"  style="width:50%" required type="auctioneer" [(ngModel)]='auctioneerText' class="form-control" width="50%" id="auctioneer" placeholder="Leiloeiro" name="auctioneer">  
+                <!-- <span class="help-bpx" *ngIf="auctioneer.touched && !auctioneer.valid ">**</span>   -->
               </div>  
             </div> 
             <div class="form-group" >  
               <label class="control-label col-sm-2" for="startDate">Data Inicial:</label>  
               <div class="col-sm-10">  
-                <input #startDate="ngModel"  style="width:50%" type="date" [(ngModel)]='objtempauction.startDate' class="form-control" width="50%" id="startDate" placeholder="Data Inicial" name="startDate">  
-                <span class="help-bpx" *ngIf="startDate.touched && !startDate.valid ">**</span>  
+                <input #startDate="ngModel"  style="width:50%" type="date" [(ngModel)]='startDateText' class="form-control" width="50%" id="startDate" placeholder="Data Inicial" name="startDate">  
+                <!-- <span class="help-bpx" *ngIf="startDate.touched && !startDate.valid ">**</span>   -->
               </div>  
             </div> 
             <div class="form-group" >  
               <label class="control-label col-sm-2" for="endDate">Data Final:</label>  
               <div class="col-sm-10">  
-                <input #endDate="ngModel"  style="width:50%" type="date" [(ngModel)]='objtempauction.endDate' class="form-control" width="50%" id="endDate" placeholder="Data Final" name="endDate">  
-                <span class="help-bpx" *ngIf="endDate.touched && !endDate.valid ">**</span>  
+                <input #endDate="ngModel"  style="width:50%" type="date" [(ngModel)]='endDateText' class="form-control" width="50%" id="endDate" placeholder="Data Final" name="endDate">  
+                <!-- <span class="help-bpx" *ngIf="endDate.touched && !endDate.valid ">**</span>   -->
               </div>  
             </div>  
-             <div class="form-group">          
-              <div class="col-sm-offset-9 col-sm-10">  
+             <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-10">  
+                <div class="validation-error">Todos os campos são obrigatórios.</div>         
+              </div>
+                <div class="col-sm-offset-9 col-sm-10">  
                 <button  id="btnsubmit"  type="submit" class="btn btn-success">Salvar</button>  
               </div>  
             </div>  

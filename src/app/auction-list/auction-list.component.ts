@@ -4,7 +4,7 @@ import { AuctionDataService } from '../DataService/AuctionDataService';
 import { Auction } from 'src/Models/Auction';
 import { Router } from '@angular/router';
 import { AuctionUpdateComponent } from '../auction-update/auction-update.component';
-import { CurrencyPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -55,27 +55,22 @@ export class AuctionListComponent implements OnInit {
   }
 
   loadAddnew() {
-    this.addcomponent.objtempauction.AuctionName = '';
-    this.addcomponent.objtempauction.InitialBet = null;
-    this.addcomponent.objtempauction.UsedItem = 0;
-    this.addcomponent.objtempauction.Auctioneer = '';
-    this.addcomponent.objtempauction.StartDate = null;
-    this.addcomponent.objtempauction.EndDate = null;
+    this.addcomponent.tempauction = new Auction();
   }
   loadnewForm(id: string,
               auctionName: string,
-              initialBet: CurrencyPipe,
+              initialBet: DecimalPipe,
               usedItem: number,
               auctioneer: string,
               startDate: Date,
               endDate: Date) {
     console.log(usedItem);
-    this.editcomponent.objtempauction.AuctionName = auctionName;
-    this.editcomponent.objtempauction.InitialBet = initialBet;
-    this.editcomponent.objtempauction.UsedItem = usedItem;
-    this.editcomponent.objtempauction.Auctioneer = auctioneer;
-    this.editcomponent.objtempauction.StartDate = startDate;
-    this.editcomponent.objtempauction.EndDate = endDate;
+    this.editcomponent.tempauction.AuctionName = auctionName;
+    this.editcomponent.tempauction.InitialBet = initialBet;
+    this.editcomponent.tempauction.UsedItem = usedItem;
+    this.editcomponent.tempauction.Auctioneer = auctioneer;
+    this.editcomponent.tempauction.StartDate = startDate;
+    this.editcomponent.tempauction.EndDate = endDate;
   }
   RefreshData() {
     this.LoadData();

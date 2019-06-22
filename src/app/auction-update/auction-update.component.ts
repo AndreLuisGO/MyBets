@@ -21,13 +21,13 @@ export class AuctionUpdateComponent implements OnInit {
   @Input() reset = false;
   @ViewChild('regForm', {static : false }) myForm: NgForm;
   @Input() isReset = false;
-  objtempauction: Auction;
+  tempauction: Auction;
   @Input() objauc: Auction = new Auction();
   ngOnInit() {
   }
 
   EditAuction(regForm: NgForm) {
-    this.dataservice.EditAuction(this.objtempauction).subscribe(res => {
+    this.dataservice.EditAuction(this.tempauction).subscribe(res => {
       alert('Leilao adicionado com sucesso!');
       this.nameEvent.emit('ccc');
       this.cb.nativeElement.click();

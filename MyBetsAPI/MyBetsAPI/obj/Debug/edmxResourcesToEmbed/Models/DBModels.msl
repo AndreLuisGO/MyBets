@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MyBetsDBModelStoreContainer" CdmEntityContainer="MyBetsDBEntities">
+    <EntitySetMapping Name="Auctions">
+      <EntityTypeMapping TypeName="MyBetsDBModel.Auctions">
+        <MappingFragment StoreEntitySet="Auctions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AuctionName" ColumnName="AuctionName" />
+          <ScalarProperty Name="InitialBet" ColumnName="InitialBet" />
+          <ScalarProperty Name="UsedItem" ColumnName="UsedItem" />
+          <ScalarProperty Name="Auctioneer" ColumnName="Auctioneer" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="MyBetsDBModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

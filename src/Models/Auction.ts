@@ -1,8 +1,8 @@
-import { CurrencyPipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 
 export class Auction {
   AuctionName: string;
-  InitialBet: CurrencyPipe;
+  InitialBet: DecimalPipe;
   UsedItem: number;
   Auctioneer: string;
   StartDate: Date;

@@ -15,7 +15,7 @@ export class AuctionAddComponent implements OnInit {
 
   @Input() cleardata = false;
   @Output() nameEvent = new EventEmitter<string>();
-  objtempauction: Auction;
+  tempauction: Auction;
   @Input() objauc: Auction = new Auction();
   @ViewChild('closeBtn', {static: false}) cb: ElementRef;
 
@@ -26,15 +26,15 @@ ngOnInit() {
 
 }
 Register(regForm: NgForm) {
-  this.objtempauction = new Auction();
-  this.objtempauction.AuctionName = regForm.value.auctionName;
-  this.objtempauction.InitialBet = regForm.value.initialBet;
-  this.objtempauction.UsedItem = regForm.value.usedItem;
-  this.objtempauction.Auctioneer = regForm.value.auctioneer;
-  this.objtempauction.StartDate = regForm.value.startDate;
-  this.objtempauction.EndDate = regForm.value.endDate;
+  this.tempauction = new Auction();
+  this.tempauction.AuctionName = regForm.value.endDate;
+  this.tempauction.InitialBet = regForm.value.initialBet;
+  this.tempauction.UsedItem = regForm.value.usedItem;
+  this.tempauction.Auctioneer = regForm.value.auctioneer;
+  this.tempauction.StartDate = regForm.value.startDate;
+  this.tempauction.EndDate = regForm.value.endDate;
 
-  this.dataService.AuctionAdd(this.objtempauction).subscribe(res => {
+  this.dataService.AuctionAdd(this.tempauction).subscribe(res => {
     alert('Leilao registrado com sucesso!');
     this.TakeHome();
   }

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyBetsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Auctions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="AuctionName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="InitialBet" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="UsedItem" Type="int" Nullable="false" />
+    <Property Name="Auctioneer" Type="varchar" MaxLength="24" Nullable="false" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="username" Type="varchar" MaxLength="24" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Auctions_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Auctions" Type="Self.Auctions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="Auctions">
+        <PropertyRef Name="Auctioneer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MyBetsDBModelStoreContainer">
+    <EntitySet Name="Auctions" EntityType="Self.Auctions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Auctions_Users" Association="Self.FK_Auctions_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Auctions" EntitySet="Auctions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
