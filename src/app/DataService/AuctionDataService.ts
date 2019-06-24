@@ -6,33 +6,33 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AuctionDataService {
   auctions: Observable<Auction[]>;
-  newauction: Auction;
+  newAuction: Auction;
   constructor(private http: HttpClient) {
   }
 
   getAuction() {
     return this.http.get<Auction[]>(ROOT_URL + 'Auction');
   }
-  AuctionAdd(auc: Auction) {
+  AuctionAdd(newAuction: Auction) {
 
     const headers = new HttpHeaders().set('content-type', 'application/json');
     const body = {
-      AuctionName: auc.AuctionName,
-      InitialBet: auc.InitialBet,
-      UsedItem: auc.UsedItem,
-      Auctioneer: auc.Auctioneer,
-      StartDate: auc.StartDate,
-      EndDate: auc.EndDate
+      AuctionName: this.newAuction.AuctionName,
+      InitialBet: newAuction.InitialBet,
+      UsedItem: newAuction.UsedItem,
+      Auctioneer: newAuction.Auctioneer,
+      StartDate: newAuction.StartDate,
+      EndDate: newAuction.EndDate
     };
     console.log(ROOT_URL);
 
-    return this.http.post<Auction>(ROOT_URL + '/Auction', body, { headers });
+    return this.http.post<Auction>(ROOT_URL + 'Auction', body, { headers });
 
   }
 
   EditAuction(auc: Auction) {
     console.log(auc);
-    const params = new HttpParams().set('ID', auc.Id);
+    const params = new HttpParams().set('ID', auc.Id.toString());
     const headers = new HttpHeaders().set('content-type', 'application/json');
     const body = {
       AuctionName: auc.AuctionName,
@@ -46,7 +46,7 @@ export class AuctionDataService {
 
   }
   DeleteAuction(auc: Auction) {
-    const params = new HttpParams().set('ID', auc.Id);
+    const params = new HttpParams().set('ID', auc.Id.toString());
     const headers = new HttpHeaders().set('content-type', 'application/json');
     const body = {
       AuctionName: auc.AuctionName,
@@ -56,7 +56,7 @@ export class AuctionDataService {
       StartDate: auc.StartDate,
       EndDate: auc.EndDate
     };
-    return this.http.delete<Auction>(ROOT_URL + '/Auction/' + auc.Id);
+    return this.http.delete<Auction>(ROOT_URL + 'Auction/' + auc.Id);
 
   }
 

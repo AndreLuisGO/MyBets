@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.705
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBetsAPI", "MyBetsAPI\MyBetsAPI.csproj", "{CCD2A92E-1BA8-42A9-A0FF-3587A3A8BDAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBetsAPI", "MyBetsAPI\MyBetsAPI.csproj", "{7F87CE9D-3B56-454F-BC96-6B12F8AC916D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CCD2A92E-1BA8-42A9-A0FF-3587A3A8BDAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CCD2A92E-1BA8-42A9-A0FF-3587A3A8BDAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CCD2A92E-1BA8-42A9-A0FF-3587A3A8BDAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CCD2A92E-1BA8-42A9-A0FF-3587A3A8BDAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F87CE9D-3B56-454F-BC96-6B12F8AC916D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F87CE9D-3B56-454F-BC96-6B12F8AC916D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F87CE9D-3B56-454F-BC96-6B12F8AC916D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F87CE9D-3B56-454F-BC96-6B12F8AC916D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {AF68104B-883F-4452-B22A-204E9AD02FE7}
+		SolutionGuid = {ABE0D6EA-1314-4CC1-BAE8-1C76C66E6F79}
 	EndGlobalSection
 EndGlobal

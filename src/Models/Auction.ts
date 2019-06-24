@@ -2,11 +2,11 @@ import { DecimalPipe } from '@angular/common';
 
 export class Auction {
   AuctionName: string;
-  InitialBet: DecimalPipe;
+  InitialBet: number;
   UsedItem: number;
   Auctioneer: string;
   StartDate: Date;
   EndDate: Date;
-  Id: string;
+  Id: number;
 
 }

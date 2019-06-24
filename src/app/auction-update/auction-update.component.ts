@@ -12,7 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 })
 export class AuctionUpdateComponent implements OnInit {
 
-  constructor(private dataservice: AuctionDataService, private route: Router) {
+  constructor(private dataService: AuctionDataService, private route: Router) {
   }
 
   @Output() nameEvent = new EventEmitter<string>();
@@ -21,14 +21,14 @@ export class AuctionUpdateComponent implements OnInit {
   @Input() reset = false;
   @ViewChild('regForm', {static : false }) myForm: NgForm;
   @Input() isReset = false;
-  tempauction: Auction;
+  tempAuction: Auction;
   @Input() objauc: Auction = new Auction();
   ngOnInit() {
   }
 
   EditAuction(regForm: NgForm) {
-    this.dataservice.EditAuction(this.tempauction).subscribe(res => {
-      alert('Leilao adicionado com sucesso!');
+    this.dataService.EditAuction(this.tempAuction).subscribe(res => {
+      alert('Leilão alterado com sucesso!');
       this.nameEvent.emit('ccc');
       this.cb.nativeElement.click();
 

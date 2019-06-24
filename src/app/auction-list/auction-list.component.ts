@@ -16,13 +16,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class AuctionListComponent implements OnInit {
 
   aucList: Auction[];
-  tempauction: Auction;
+  tempAuction: Auction;
   dataavailable: boolean;
 
   @ViewChild('auctionadd', { static: false }) addcomponent: AuctionAddComponent;
   @ViewChild('regForm', { static: false }) editcomponent: AuctionUpdateComponent;
 
-  constructor(private dataservice: AuctionDataService, private route: Router) {
+  constructor(private dataService: AuctionDataService, private route: Router) {
   }
 
   ngOnInit() {
@@ -30,7 +30,7 @@ export class AuctionListComponent implements OnInit {
   }
 
   LoadData() {
-    this.dataservice.getAuction().subscribe((tempdate) => {
+    this.dataService.getAuction().subscribe((tempdate) => {
       this.aucList = tempdate;
       console.log(this.aucList);
       if (this.aucList.length > 0) {
@@ -42,12 +42,12 @@ export class AuctionListComponent implements OnInit {
       console.log(error);
     });
   }
-  deleteconfirmation(id: string) {
+  deleteconfirmation(id: number) {
 
     if (confirm('Are you sure you want to delete this ?')) {
-      this.tempauction = new Auction();
-      this.tempauction.Id = id;
-      this.dataservice.DeleteAuction(this.tempauction).subscribe(res => {
+      this.tempAuction = new Auction();
+      this.tempAuction.Id = id;
+      this.dataService.DeleteAuction(this.tempAuction).subscribe(res => {
         alert('Leilao Excluido!');
         this.LoadData();
       });
@@ -55,22 +55,22 @@ export class AuctionListComponent implements OnInit {
   }
 
   loadAddnew() {
-    this.addcomponent.tempauction = new Auction();
+    this.addcomponent.tempAuction = new Auction();
   }
-  loadnewForm(id: string,
+  loadnewForm(id: number,
               auctionName: string,
-              initialBet: DecimalPipe,
+              initialBet: number,
               usedItem: number,
               auctioneer: string,
               startDate: Date,
               endDate: Date) {
     console.log(usedItem);
-    this.editcomponent.tempauction.AuctionName = auctionName;
-    this.editcomponent.tempauction.InitialBet = initialBet;
-    this.editcomponent.tempauction.UsedItem = usedItem;
-    this.editcomponent.tempauction.Auctioneer = auctioneer;
-    this.editcomponent.tempauction.StartDate = startDate;
-    this.editcomponent.tempauction.EndDate = endDate;
+    this.editcomponent.tempAuction.AuctionName = auctionName;
+    this.editcomponent.tempAuction.InitialBet = initialBet;
+    this.editcomponent.tempAuction.UsedItem = usedItem;
+    this.editcomponent.tempAuction.Auctioneer = auctioneer;
+    this.editcomponent.tempAuction.StartDate = startDate;
+    this.editcomponent.tempAuction.EndDate = endDate;
   }
   RefreshData() {
     this.LoadData();

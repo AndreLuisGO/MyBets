@@ -1,0 +1,14 @@
+E:\Desafio\MyBets\MyBetsAPI\MyBetsAPI\bin\Debug\netcoreapp2.1\MyBetsAPI.deps.json
+E:\Desafio\MyBets\MyBetsAPI\MyBetsAPI\bin\Debug\netcoreapp2.1\MyBetsAPI.runtimeconfig.json
+E:\Desafio\MyBets\MyBetsAPI\MyBetsAPI\bin\Debug\netcoreapp2.1\MyBetsAPI.runtimeconfig.dev.json
+E:\Desafio\MyBets\MyBetsAPI\MyBetsAPI\bin\Debug\netcoreapp2.1\MyBetsAPI.dll
+E:\Desafio\MyBets\MyBetsAPI\MyBetsAPI\bin\Debug\netcoreapp2.1\MyBetsAPI.pdb
+E:\Desafio\MyBets\MyBetsAPI\MyBetsAPI\obj\Debug\netcoreapp2.1\MyBetsAPI.csproj.CoreCompileInputs.cache
+E:\Desafio\MyBets\MyBetsAPI\MyBetsAPI\obj\Debug\netcoreapp2.1\MyBetsAPI.RazorAssemblyInfo.cache
+E:\Desafio\MyBets\MyBetsAPI\MyBetsAPI\obj\Debug\netcoreapp2.1\MyBetsAPI.RazorAssemblyInfo.cs
+E:\Desafio\MyBets\MyBetsAPI\MyBetsAPI\obj\Debug\netcoreapp2.1\MyBetsAPI.AssemblyInfoInputs.cache
+E:\Desafio\MyBets\MyBetsAPI\MyBetsAPI\obj\Debug\netcoreapp2.1\MyBetsAPI.AssemblyInfo.cs
+E:\Desafio\MyBets\MyBetsAPI\MyBetsAPI\obj\Debug\netcoreapp2.1\MyBetsAPI.RazorTargetAssemblyInfo.cache
+E:\Desafio\MyBets\MyBetsAPI\MyBetsAPI\obj\Debug\netcoreapp2.1\MyBetsAPI.dll
+E:\Desafio\MyBets\MyBetsAPI\MyBetsAPI\obj\Debug\netcoreapp2.1\MyBetsAPI.pdb
+E:\Desafio\MyBets\MyBetsAPI\MyBetsAPI\obj\Debug\netcoreapp2.1\MyBetsAPI.csprojAssemblyReference.cache

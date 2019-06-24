@@ -15,7 +15,7 @@ export class AuctionAddComponent implements OnInit {
 
   @Input() cleardata = false;
   @Output() nameEvent = new EventEmitter<string>();
-  tempauction: Auction;
+  tempAuction: Auction;
   @Input() objauc: Auction = new Auction();
   @ViewChild('closeBtn', {static: false}) cb: ElementRef;
 
@@ -23,19 +23,36 @@ constructor(private dataService: AuctionDataService, private route: Router) {
 
 }
 ngOnInit() {
-
+  this.resetForm();
 }
-Register(regForm: NgForm) {
-  this.tempauction = new Auction();
-  this.tempauction.AuctionName = regForm.value.endDate;
-  this.tempauction.InitialBet = regForm.value.initialBet;
-  this.tempauction.UsedItem = regForm.value.usedItem;
-  this.tempauction.Auctioneer = regForm.value.auctioneer;
-  this.tempauction.StartDate = regForm.value.startDate;
-  this.tempauction.EndDate = regForm.value.endDate;
 
-  this.dataService.AuctionAdd(this.tempauction).subscribe(res => {
-    alert('Leilao registrado com sucesso!');
+resetForm(form?: NgForm) {
+  if (form != null) {
+  form.resetForm();
+  }
+  this.dataService.newAuction = {
+    AuctionName : '',
+    InitialBet: 0.00,
+    UsedItem: 0,
+    Auctioneer: '',
+    StartDate: new Date('01/01/0001'),
+    EndDate: new Date('01/01/0001'),
+    Id: 0
+  };
+}
+
+
+Register(regForm: NgForm) {
+  this.tempAuction = new Auction();
+  this.tempAuction.AuctionName = regForm.value.auctionName;
+  this.tempAuction.InitialBet = regForm.value.initialBet;
+  this.tempAuction.UsedItem = regForm.value.usedItem;
+  this.tempAuction.Auctioneer = regForm.value.auctioneer;
+  this.tempAuction.StartDate = regForm.value.startDate;
+  this.tempAuction.EndDate = regForm.value.endDate;
+
+  this.dataService.AuctionAdd(this.tempAuction).subscribe(res => {
+    alert('Leilão registrado com sucesso!');
     this.TakeHome();
   }
   );
