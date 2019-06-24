@@ -26,7 +26,7 @@ export class AuctionUpdateComponent implements OnInit {
   ngOnInit() {
   }
 
-  EditAuction(regForm: NgForm) {
+  EditAuction(auc: Auction) {
     this.dataService.EditAuction(this.tempAuction).subscribe(res => {
       alert('Leilão alterado com sucesso!');
       this.nameEvent.emit('ccc');

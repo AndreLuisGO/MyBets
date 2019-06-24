@@ -1,11 +1,6 @@
 <div class="container">  
-  <input type="button" class="btn btn-primary" (click)="loadAddnew()" data-toggle="modal" data-target="#myModal" value="Criar Novo">  
+  <input type="button" class="btn btn-primary" (click)="loadAddNew()" data-toggle="modal" data-target="#myModal" value="Criar Novo">  
   <hr>  
-  <!-- <div *ngIf="!dataavailable">  
-  
-    <h4> Não existem leilões. Adicione um novo registro clicando em Criar Novo</h4>  
-  </div>   -->
-  
   <table class="table table-hover">  
     <thead>  
       <tr>  
@@ -21,20 +16,20 @@
     </thead>  
     <tbody>  
       <tr *ngFor="let auc of aucList">  
-        <td >{{auc.id}}</td>  
-        <td >{{auc.auctionName}}</td>  
-        <td >{{auc.initialBet}}</td>  
-        <td >{{auc.usedItem=="1"?'Usado':'Novo'}}</td>  
-        <td >{{auc.auctioneer}}</td>  
-        <td >{{auc.startDate | date: 'dd/MM/yyyy' }}</td>  
-        <td >{{auc.endDate | date: 'dd/MM/yyyy'}}</td>  
-        <td >  
-          <button type="button" class="btn btn-default btn-primary" (click)="loadnewForm(auc.Id,auc.AuctionName,auc.InitialBet, auc.UsedItem,auc.Auctioneer,auc.StartDate,auc.EndDate)"  
-            data-toggle="modal" data-target="#myModaledit">  
+        <td>{{auc.id}}</td>  
+        <td>{{auc.auctionName}}</td>  
+        <td>{{auc.initialBet}}</td>  
+        <td>{{auc.usedItem=="1"?'Usado':'Novo'}}</td>  
+        <td>{{auc.auctioneer}}</td>  
+        <td>{{auc.startDate | date: 'dd/MM/yyyy' }}</td>  
+        <td>{{auc.endDate | date: 'dd/MM/yyyy'}}</td>  
+        <td>  
+          <button type="button" class="btn btn-default btn-primary" (click)="Register(auc)"  
+            data-toggle="modal" data-target="#myModal">  
             <span class="glyphicon glyphicon-edit"></span> Editar  
           </button>  
           |  
-          <button type="button" class="btn btn-default btn-danger" (click)="deleteconfirmation(auc.Id)">  
+          <button type="button" class="btn btn-default btn-danger" (click)="deleteconfirmation(auc.id)">  
             <span class="glyphicon glyphicon-trash"></span> Excluir  
           </button>  
   

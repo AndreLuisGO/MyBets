@@ -1,7 +1,9 @@
 <div class="container" style="border:thin">  
   <form #auctionadd='ngForm' autocomplete="off" (ngSubmit)="Register(auctionadd)" class="form-horizontal" style="width:50%"  >    
-  <div class="form-group" >  
-              <label class="control-label col-sm-2" for="AuctionName" >Nome do Leilao:</label>  
+  
+    <div class="form-group" >  
+      <input #Id="ngModel" type="hidden" name="Id"  [(ngModel)]="dataService.newAuction.Id">
+      <label class="control-label col-sm-2" for="AuctionName" >Nome do Leilao:</label>  
               <div class="col-sm-10">  
                 <input #ActionName="ngModel" style="width:50%" required type="AuctionName" [(ngModel)]="dataService.newAuction.AuctionName" class="form-control ng-" width="50%" id="auctionName" placeholder="Nome do Leilao" name="AuctionName">  
             <!-- <div class="help-bpx" *ngIf="AuctionName.touched && !AuctionName.valid ">Obrigatorio</div> -->

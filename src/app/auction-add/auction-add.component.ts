@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuctionDataService } from '../DataService/AuctionDataService';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { format } from 'url';
 
 @Component({
   selector: 'app-auction-add',
@@ -20,7 +21,7 @@ export class AuctionAddComponent implements OnInit {
   @Input() objauc: Auction = new Auction();
   @ViewChild('closeBtn', {static: false}) cb: ElementRef;
 
-constructor(private dataService: AuctionDataService, 
+constructor(private dataService: AuctionDataService,
             private route: Router,
             private toastr: ToastrService) {
 
@@ -31,7 +32,7 @@ ngOnInit() {
 
 resetForm(form?: NgForm) {
   if (form != null) {
-  form.resetForm();
+    form.resetForm();
   }
   this.dataService.newAuction = {
     AuctionName : '',
@@ -40,7 +41,7 @@ resetForm(form?: NgForm) {
     Auctioneer: '',
     StartDate: new Date('01/01/0001'),
     EndDate: new Date('01/01/0001'),
-    Id: 0
+    Id: 1
   };
 }
 
@@ -53,14 +54,29 @@ Register(regForm: NgForm) {
   this.tempAuction.Auctioneer = regForm.value.auctioneer;
   this.tempAuction.StartDate = regForm.value.startDate;
   this.tempAuction.EndDate = regForm.value.endDate;
-
+  this.tempAuction.Id = regForm.value.Id;
+  //if (regForm.value.Id == null) {
   this.dataService.AuctionAdd(this.tempAuction).subscribe(res => {
-    alert('Leilão Registrado!')
-    this.toastr.success('Leilão Registrado!')
+    alert('Leilão Registrado!');
+    this.toastr.success('Leilão Registrado!');
+    this.TakeHome();
+  }
+  );
+// } else {
+//   this.updateAuction(regForm);
+//   this.TakeHome();
+//   }
+}
+
+updateAuction(form: NgForm) {
+  this.dataService.EditAuction(form.value).subscribe(res => {
+    alert('Leilão Atualizado!');
+    this.toastr.success('Leilão Atualizado!');
     this.TakeHome();
   }
   );
 }
+
 TakeHome() {
   this.nameEvent.emit('ccc');
   this.cb.nativeElement.click();

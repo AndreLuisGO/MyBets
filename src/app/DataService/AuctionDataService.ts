@@ -32,31 +32,12 @@ export class AuctionDataService {
 
   EditAuction(auc: Auction) {
     console.log(auc);
-    const params = new HttpParams().set('ID', auc.Id.toString());
-    const headers = new HttpHeaders().set('content-type', 'application/json');
-    const body = {
-      AuctionName: auc.AuctionName,
-      InitialBet: auc.InitialBet,
-      UsedItem: auc.UsedItem,
-      Auctioneer: auc.Auctioneer,
-      StartDate: auc.StartDate,
-      EndDate: auc.EndDate
-    };
-    return this.http.put<Auction>(ROOT_URL + 'Auctions/' + auc.Id, body, { headers, params });
+    return this.http.put<Auction>(ROOT_URL + 'Auctions/' + auc.Id, auc);
 
   }
-  DeleteAuction(auc: Auction) {
-    const params = new HttpParams().set('ID', auc.Id.toString());
-    const headers = new HttpHeaders().set('content-type', 'application/json');
-    const body = {
-      AuctionName: auc.AuctionName,
-      InitialBet: auc.InitialBet,
-      UsedItem: auc.UsedItem,
-      Auctioneer: auc.Auctioneer,
-      StartDate: auc.StartDate,
-      EndDate: auc.EndDate
-    };
-    return this.http.delete<Auction>(ROOT_URL + 'Auctions/' + auc.Id);
+  DeleteAuction(id: number) {
+    console.log(id);
+    return this.http.delete<Auction>(ROOT_URL + 'Auctions/' + id);
 
   }
 

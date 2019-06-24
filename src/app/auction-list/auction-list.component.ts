@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AuctionUpdateComponent } from '../auction-update/auction-update.component';
 import { DecimalPipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class AuctionListComponent implements OnInit {
   @ViewChild('auctionadd', { static: false }) addcomponent: AuctionAddComponent;
   @ViewChild('regForm', { static: false }) editcomponent: AuctionUpdateComponent;
 
-  constructor(private dataService: AuctionDataService, private route: Router) {
+  constructor(private dataService: AuctionDataService, private route: Router, private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -33,32 +34,18 @@ export class AuctionListComponent implements OnInit {
   deleteconfirmation(id: number) {
 
     if (confirm('Tem certeza que deseja excluir este registro ?')) {
-      this.tempAuction = new Auction();
-      this.tempAuction.Id = id;
-      this.dataService.DeleteAuction(this.tempAuction).subscribe(res => {
-        alert('Leilao Excluído!');
-        this.dataService.getAuction();
+      this.dataService.DeleteAuction(id).subscribe(res => {
+        this.ngOnInit();
+        this.toastr.warning('Leilão Excluído!');
       });
     }
   }
 
-  loadAddnew() {
+  loadAddNew() {
     this.addcomponent.tempAuction = new Auction();
   }
-  loadnewForm(id: number,
-              auctionName: string,
-              initialBet: number,
-              usedItem: number,
-              auctioneer: string,
-              startDate: Date,
-              endDate: Date) {
-    console.log(usedItem);
-    this.editcomponent.tempAuction.AuctionName = auctionName;
-    this.editcomponent.tempAuction.InitialBet = initialBet;
-    this.editcomponent.tempAuction.UsedItem = usedItem;
-    this.editcomponent.tempAuction.Auctioneer = auctioneer;
-    this.editcomponent.tempAuction.StartDate = startDate;
-    this.editcomponent.tempAuction.EndDate = endDate;
+  loadNewForm(auc: Auction) {
+    this.addcomponent.tempAuction = auc;
   }
   RefreshData() {
     this.dataService.getAuction();

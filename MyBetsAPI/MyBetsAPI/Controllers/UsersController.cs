@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +11,8 @@ using MyBetsAPI.Models;
 
 namespace MyBetsAPI.Controllers
 {
-    [Route("api/[controller]")]
+  [EnableCors("AnotherPolicy")]
+  [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
