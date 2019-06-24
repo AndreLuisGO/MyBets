@@ -9,6 +9,8 @@ import { AuctionListComponent } from './auction-list/auction-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuctionDataService } from './DataService/AuctionDataService';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { AuctionDataService } from './DataService/AuctionDataService';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [AuctionDataService],
   bootstrap: [AppComponent]

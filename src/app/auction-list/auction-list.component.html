@@ -22,12 +22,12 @@
     <tbody>  
       <tr *ngFor="let e of auclist let i = index ">  
         <td scope="col">{{i+1}}</td>  
-        <td scope="col">{{e.auctionName}}</td>  
-        <td scope="col">{{e.initialBet}}</td>  
-        <td scope="col">{{e.usedItem=="1"?'Usado':'Novo'}}</td>  
-        <td scope="col">{{e.auctioneer}}</td>  
-        <td scope="col">{{e.startDate}}</td>  
-        <td scope="col">{{e.endDate}}</td>  
+        <td scope="col">{{dataService.e.AuctionName}}</td>  
+        <td scope="col">{{e.InitialBet}}</td>  
+        <td scope="col">{{e.UsedItem=="1"?'Usado':'Novo'}}</td>  
+        <td scope="col">{{e.Auctioneer}}</td>  
+        <td scope="col">{{e.StartDate}}</td>  
+        <td scope="col">{{e.EndDate}}</td>  
         
         <td style="display:none">{{e.id}}</td>  
         <td scope="col">  

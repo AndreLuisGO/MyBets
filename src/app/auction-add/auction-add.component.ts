@@ -4,6 +4,7 @@ import { Auction } from 'src/Models/Auction';
 import { Router } from '@angular/router';
 import { AuctionDataService } from '../DataService/AuctionDataService';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-auction-add',
@@ -19,7 +20,9 @@ export class AuctionAddComponent implements OnInit {
   @Input() objauc: Auction = new Auction();
   @ViewChild('closeBtn', {static: false}) cb: ElementRef;
 
-constructor(private dataService: AuctionDataService, private route: Router) {
+constructor(private dataService: AuctionDataService, 
+            private route: Router,
+            private toastr: ToastrService) {
 
 }
 ngOnInit() {
@@ -52,7 +55,8 @@ Register(regForm: NgForm) {
   this.tempAuction.EndDate = regForm.value.endDate;
 
   this.dataService.AuctionAdd(this.tempAuction).subscribe(res => {
-    alert('Leilão registrado com sucesso!');
+    alert('Leilão Registrado!')
+    this.toastr.success('Leilão Registrado!')
     this.TakeHome();
   }
   );

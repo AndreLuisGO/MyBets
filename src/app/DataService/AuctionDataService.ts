@@ -11,22 +11,22 @@ export class AuctionDataService {
   }
 
   getAuction() {
-    return this.http.get<Auction[]>(ROOT_URL + 'Auction');
+    return this.http.get<Auction[]>(ROOT_URL + 'Auctions');
   }
   AuctionAdd(newAuction: Auction) {
 
     const headers = new HttpHeaders().set('content-type', 'application/json');
     const body = {
       AuctionName: this.newAuction.AuctionName,
-      InitialBet: newAuction.InitialBet,
-      UsedItem: newAuction.UsedItem,
-      Auctioneer: newAuction.Auctioneer,
-      StartDate: newAuction.StartDate,
-      EndDate: newAuction.EndDate
+      InitialBet: this.newAuction.InitialBet,
+      UsedItem: this.newAuction.UsedItem,
+      Auctioneer: this.newAuction.Auctioneer,
+      StartDate: this.newAuction.StartDate, 
+      EndDate: this.newAuction.EndDate
     };
     console.log(ROOT_URL);
 
-    return this.http.post<Auction>(ROOT_URL + 'Auction', body, { headers });
+    return this.http.post<Auction>(ROOT_URL + 'Auctions', body, { headers });
 
   }
 
@@ -42,7 +42,7 @@ export class AuctionDataService {
       StartDate: auc.StartDate,
       EndDate: auc.EndDate
     };
-    return this.http.put<Auction>(ROOT_URL + 'Auction/' + auc.Id, body, { headers, params });
+    return this.http.put<Auction>(ROOT_URL + 'Auctions/' + auc.Id, body, { headers, params });
 
   }
   DeleteAuction(auc: Auction) {
@@ -56,7 +56,7 @@ export class AuctionDataService {
       StartDate: auc.StartDate,
       EndDate: auc.EndDate
     };
-    return this.http.delete<Auction>(ROOT_URL + 'Auction/' + auc.Id);
+    return this.http.delete<Auction>(ROOT_URL + 'Auctions/' + auc.Id);
 
   }
 

@@ -4,14 +4,14 @@
               <label class="control-label col-sm-2" for="AuctionName" >Nome do Leilao:</label>  
               <div class="col-sm-10">  
                 <input #ActionName="ngModel" style="width:50%" required type="AuctionName" [(ngModel)]="dataService.newAuction.AuctionName" class="form-control ng-" width="50%" id="auctionName" placeholder="Nome do Leilao" name="AuctionName">  
-            <!-- <span class="help-bpx" *ngIf="AuctionName.touched && !AuctionName.valid ">Obrigatorio</span>  -->
+            <!-- <div class="help-bpx" *ngIf="AuctionName.touched && !AuctionName.valid ">Obrigatorio</div> -->
               </div>  
             </div>  
             <div class="form-group" >  
               <label class="control-label col-sm-2" for="InitialBet">Valor Inicial:</label>  
               <div class="col-sm-10">  
                 <input  #InitialBet="ngModel" style="width:50%" required type="number" min ="0" value="0" step="0.50" class="form-control" width="50%" id="initialBet" placeholder="Valor Inicial" name="InitialBet" [(ngModel)]='dataService.newAuction.InitialBet' onblur="this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this.value)?'inherit':'red'">  
-                <!-- <span class="help-bpx" *ngIf="initialBet.touched && !initialBet.valid ">Obrigatorio</span>  -->
+               <!-- <div class="help-bpx" *ngIf="InitialBet.touched && !InitialBet.valid ">Obrigatorio</div> -->
               </div>   
             </div>  
             <div class="form-group" >  
@@ -21,7 +21,7 @@
                 <option value="0" selected disabled>Selecione</option>  
                 <option value="1">Usado</option>  
                 <option value="2">Novo</option>  
-               <!-- <span class="help-bpx" *ngIf="usedItem.touched && !usedItem.valid ">Obrigatorio</span>  -->
+               <!-- <div class="help-bpx" *ngIf="UsedItem.touched && !UsedItem.valid ">Obrigatorio</div> -->
               </select>  
               </div>  
             </div>  
@@ -29,21 +29,21 @@
               <label class="control-label col-sm-2" for="Auctioneer">Leiloeiro:</label>  
               <div class="col-sm-10">  
                 <input #Auctioneer="ngModel"  style="width:50%" required type="Auctioneer" [(ngModel)]='dataService.newAuction.Auctioneer' class="form-control" width="50%" id="auctioneer" placeholder="Leiloeiro" name="Auctioneer">  
-                <!-- <span class="help-bpx" *ngIf="auctioneer.touched && !auctioneer.valid ">**</span>   -->
+                <!-- <div class="help-bpx" *ngIf="Auctioneer.touched && !Auctioneer.valid ">Obrigatorio</div>   -->
               </div>  
             </div> 
             <div class="form-group" >  
               <label class="control-label col-sm-2" for="startDate">Data Inicial:</label>  
               <div class="col-sm-10">  
                 <input #StartDate="ngModel"  style="width:50%" type="date" [(ngModel)]='dataService.newAuction.StartDate' class="form-control" width="50%" id="startDate" placeholder="Data Inicial" name="StartDate">  
-                <!-- <span class="help-bpx" *ngIf="startDate.touched && !startDate.valid ">**</span>   -->
+                <!-- <div class="help-bpx" *ngIf="StartDate.touched && !StartDate.valid ">Obrigatorio</div>   -->
               </div>  
             </div> 
             <div class="form-group" >  
               <label class="control-label col-sm-2" for="endDate">Data Final:</label>  
               <div class="col-sm-10">  
                 <input #EndDate="ngModel"  style="width:50%" type="date" [(ngModel)]='dataService.newAuction.EndDate' class="form-control" width="50%" id="endDate" placeholder="Data Final" name="EndDate">  
-                <!-- <span class="help-bpx" *ngIf="endDate.touched && !endDate.valid ">**</span>   -->
+                <!-- <div class="help-bpx" *ngIf="EndDate.touched && !EndDate.valid ">Obrigatorio</div>   -->
               </div>  
             </div>  
              <div class="form-group">

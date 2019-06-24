@@ -33,7 +33,7 @@ export class AuctionListComponent implements OnInit {
     this.dataService.getAuction().subscribe((tempdate) => {
       this.aucList = tempdate;
       console.log(this.aucList);
-      if (this.aucList.length > 0) {
+      if (this.aucList.length >= -1) {
         this.dataavailable = true;
       } else {
         this.dataavailable = false;
