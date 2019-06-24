@@ -1,42 +1,40 @@
 <div class="container">  
   <input type="button" class="btn btn-primary" (click)="loadAddnew()" data-toggle="modal" data-target="#myModal" value="Criar Novo">  
   <hr>  
-  <div *ngIf="!dataavailable">  
+  <!-- <div *ngIf="!dataavailable">  
   
     <h4> Não existem leilões. Adicione um novo registro clicando em Criar Novo</h4>  
-  </div>  
+  </div>   -->
   
-  <table class="table" *ngIf="dataavailable">  
+  <table class="table table-hover">  
     <thead>  
       <tr>  
         <th scope="col">Id:</th>  
         <th scope="col">Nome do Leilão</th>  
         <th scope="col">Valor Inicial</th>  
         <th scope="col">Condição</th>  
-        <th scope="col">Leiloeiro</th>  \
+        <th scope="col">Leiloeiro</th>
         <th scope="col">Data Inicial</th>  
         <th scope="col">Data Final</th>  
         <th scope="col" style="align-content: center">Acões</th>  
       </tr>  
     </thead>  
     <tbody>  
-      <tr *ngFor="let e of auclist let i = index ">  
-        <td scope="col">{{i+1}}</td>  
-        <td scope="col">{{dataService.e.AuctionName}}</td>  
-        <td scope="col">{{e.InitialBet}}</td>  
-        <td scope="col">{{e.UsedItem=="1"?'Usado':'Novo'}}</td>  
-        <td scope="col">{{e.Auctioneer}}</td>  
-        <td scope="col">{{e.StartDate}}</td>  
-        <td scope="col">{{e.EndDate}}</td>  
-        
-        <td style="display:none">{{e.id}}</td>  
-        <td scope="col">  
-          <button type="button" class="btn btn-default btn-primary" (click)="loadnewForm(e.id,e.auctionName,e.initialBet, e.usedItem,e.auctioneer,e.startDate,e.endDate)"  
+      <tr *ngFor="let auc of aucList">  
+        <td >{{auc.id}}</td>  
+        <td >{{auc.auctionName}}</td>  
+        <td >{{auc.initialBet}}</td>  
+        <td >{{auc.usedItem=="1"?'Usado':'Novo'}}</td>  
+        <td >{{auc.auctioneer}}</td>  
+        <td >{{auc.startDate | date: 'dd/MM/yyyy' }}</td>  
+        <td >{{auc.endDate | date: 'dd/MM/yyyy'}}</td>  
+        <td >  
+          <button type="button" class="btn btn-default btn-primary" (click)="loadnewForm(auc.Id,auc.AuctionName,auc.InitialBet, auc.UsedItem,auc.Auctioneer,auc.StartDate,auc.EndDate)"  
             data-toggle="modal" data-target="#myModaledit">  
             <span class="glyphicon glyphicon-edit"></span> Editar  
           </button>  
           |  
-          <button type="button" class="btn btn-default btn-danger" (click)="deleteconfirmation(e.id)">  
+          <button type="button" class="btn btn-default btn-danger" (click)="deleteconfirmation(auc.Id)">  
             <span class="glyphicon glyphicon-trash"></span> Excluir  
           </button>  
   

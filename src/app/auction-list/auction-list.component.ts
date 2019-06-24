@@ -26,30 +26,18 @@ export class AuctionListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.LoadData();
+    this.dataService.getAuction()
+      .subscribe(data => this.aucList = data);
   }
 
-  LoadData() {
-    this.dataService.getAuction().subscribe((tempdate) => {
-      this.aucList = tempdate;
-      console.log(this.aucList);
-      if (this.aucList.length >= -1) {
-        this.dataavailable = true;
-      } else {
-        this.dataavailable = false;
-      }
-    }, error => {
-      console.log(error);
-    });
-  }
   deleteconfirmation(id: number) {
 
-    if (confirm('Are you sure you want to delete this ?')) {
+    if (confirm('Tem certeza que deseja excluir este registro ?')) {
       this.tempAuction = new Auction();
       this.tempAuction.Id = id;
       this.dataService.DeleteAuction(this.tempAuction).subscribe(res => {
-        alert('Leilao Excluido!');
-        this.LoadData();
+        alert('Leilao Excluído!');
+        this.dataService.getAuction();
       });
     }
   }
@@ -73,6 +61,6 @@ export class AuctionListComponent implements OnInit {
     this.editcomponent.tempAuction.EndDate = endDate;
   }
   RefreshData() {
-    this.LoadData();
+    this.dataService.getAuction();
   }
 }

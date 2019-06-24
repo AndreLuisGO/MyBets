@@ -5,12 +5,12 @@ import { ROOT_URL } from 'src/Models/Config';
 import { Observable } from 'rxjs';
 @Injectable()
 export class AuctionDataService {
-  auctions: Observable<Auction[]>;
+  auctions: Auction[];
   newAuction: Auction;
   constructor(private http: HttpClient) {
   }
 
-  getAuction() {
+  getAuction(): Observable<Auction[]>{
     return this.http.get<Auction[]>(ROOT_URL + 'Auctions');
   }
   AuctionAdd(newAuction: Auction) {
