@@ -10,6 +10,8 @@ Possui Front End em Angular 8 e Back End em ASP.Net Core
   - NodeJs 10.16
   - Visual Studio 2018 Community
   - Visual Code 1.34
+  - Entity Framework
+  - Sqlite
   
   
 ### Divisão de Front e Back end
